@@ -1,13 +1,17 @@
 package com.daw.motor.model;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity(name = "modelo")
@@ -24,7 +28,8 @@ public class Coche {
 	@ManyToOne
 	@JoinColumn(name = "idmot")
 	private Motor motor;
-
+	@OneToMany(mappedBy = "coche" ,cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Incluye> listaIncluye = new HashSet<>();
 	
 	public Coche() {}
 
@@ -64,13 +69,12 @@ public class Coche {
 		return motor;
 	}
 
-	public String getMotorBonito() {
-		return String.format("%s de %.2f CV, PVP: %.2f",
-				motor.getTipo(), motor.getPotencia(), motor.getPrecio());
-	}
-
 	public void setMotor(Motor motor) {
 		this.motor = motor;
+	}
+	
+	public Set<Incluye> getListaIncluye() {
+		return listaIncluye;
 	}
 
 	@Override

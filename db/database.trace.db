@@ -1824,3 +1824,27 @@ INSERT INTO EQUIPAMIENTO VALUES (31, 'RUEDA RESPUESTO', 500, 'foto1.jpg') [21002
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+2024-05-16 12:22:23.921518+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INLCUYE" no encontrada
+Table "INLCUYE" not found; SQL statement:
+select e1_0.idmod,e1_1.id,e1_1.descripcion,e1_1.foto,e1_1.precio from inlcuye e1_0 join equipamiento e1_1 on e1_1.id=e1_0.ide where e1_0.idmod=? [42102-224]
+2024-05-16 12:22:27.176608+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INLCUYE" no encontrada
+Table "INLCUYE" not found; SQL statement:
+select e1_0.idmod,e1_1.id,e1_1.descripcion,e1_1.foto,e1_1.precio from inlcuye e1_0 join equipamiento e1_1 on e1_1.id=e1_0.ide where e1_0.idmod=? [42102-224]
+2024-05-16 12:22:47.515878+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INLCUYE" no encontrada
+Table "INLCUYE" not found; SQL statement:
+select e1_0.idmod,e1_1.id,e1_1.descripcion,e1_1.foto,e1_1.precio from inlcuye e1_0 join equipamiento e1_1 on e1_1.id=e1_0.ide where e1_0.idmod=? [42102-224]
+2024-05-16 12:23:01.143613+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INLCUYE" no encontrada
+Table "INLCUYE" not found; SQL statement:
+select e1_0.idmod,e1_1.id,e1_1.descripcion,e1_1.foto,e1_1.precio from inlcuye e1_0 join equipamiento e1_1 on e1_1.id=e1_0.ide where e1_0.idmod=? [42102-224]
+2024-05-16 12:23:21.241319+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INLCUYE" no encontrada
+Table "INLCUYE" not found; SQL statement:
+select e1_0.idmod,e1_1.id,e1_1.descripcion,e1_1.foto,e1_1.precio from inlcuye e1_0 join equipamiento e1_1 on e1_1.id=e1_0.ide where e1_0.idmod=? [42102-224]
+2024-05-16 12:24:04.623575+02:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Tabla "INLCUYE" no encontrada
+Table "INLCUYE" not found; SQL statement:
+select e1_0.idmod,e1_1.id,e1_1.descripcion,e1_1.foto,e1_1.precio from inlcuye e1_0 join equipamiento e1_1 on e1_1.id=e1_0.ide where e1_0.idmod=? [42102-224]

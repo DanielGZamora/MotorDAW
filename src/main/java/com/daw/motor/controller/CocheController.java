@@ -119,26 +119,24 @@ public class CocheController {
 		}
 	}
 
-	/*
 	@GetMapping("/nuevo/item")
-	public String nuevoMotor(Model modelo) {
-		Motor nuevoMotor = new Motor();
+	public String nuevoCoche(Model modelo) {
+		Coche nuevoCoche = new Coche();
 		
-		nuevoMotor.setTipo("Escriba el tipo");
+		modelo.addAttribute("coche", nuevoCoche);
+		modelo.addAttribute("listaMotores", motorService.getAll());
 		
-		modelo.addAttribute("motor", nuevoMotor);
-		
-		return "motor/formulario";
+		return "coche/formulario";
 	}
 
 	@PostMapping("/nuevo/enviar")
-	public String guardarNuevoMotor(
-			@ModelAttribute(name = "motor")
-			Motor motor,
+	public String guardarNuevoCoche(
+			@ModelAttribute(name = "coche")
+			Coche coche,
 			RedirectAttributes redirAttrs) {
 
 		try {
-			motorService.create(motor);
+			cocheService.create(coche);
 			return "redirect:..";
 		}
 		catch (Exception e) {
@@ -147,5 +145,4 @@ public class CocheController {
 			return "redirect:..";
 		}
 	}
-*/
 }

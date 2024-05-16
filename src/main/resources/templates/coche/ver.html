@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{base :: head}">
@@ -14,40 +13,125 @@
 	<nav aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="/">Inicio</a></li>
-			<li class="breadcrumb-item"><a href="/equipamiento/">Modelos</a></li>
+			<li class="breadcrumb-item"><a href="/modelo/">Modelos</a></li>
 			<li class="breadcrumb-item active" aria-current="page">Ver</li>
 		</ol>
 	</nav>
 
 	<main role="main" class="container">
-		<div class="card border-dark mb-3" style="max-width: 18rem;">
-		  <div class="card-header text-center">
-		  	Datos del Modelo<br/>
-		  </div>
-		  <div class="card-body text-dark"
-		  	th:object="${coche}">
-			<p class="card-text">
-				<span style="font-weight: bold">Id</span>: <span th:text="*{id}">1</span>
-			</p>
-			<p class="card-text">
-				<span style="font-weight: bold">Nombre</span>: <span
-					th:text="*{nombre}">Nombre del modelo</span>
-			</p>
-			<p class="card-text">
-				<span style="font-weight: bold">Precio base</span>: <span
-					th:text="*{#numbers.formatCurrency(precioBase)}">4000.0 €</span>
-			</p>
-			<p class="card-text">
-				<span style="font-weight: bold">Motor</span>: <span
-					th:text="*{motorBonito}">Descripción motor</span>
-			</p>
-		  </div>
+		<div class="row">
+		    <div class="col-lg">
+				<div class="card border-dark mb-3" style="max-width: 18rem;">
+				  <div class="card-header">
+				  	Datos del Modelo
+				  </div>
+				  <div class="card-body text-dark"
+				  	th:object="${coche}">
+					<p class="card-text">
+						<span style="font-weight: bold">Id</span>: <span th:text="*{id}">1</span>
+					</p>
+					<p class="card-text">
+						<span style="font-weight: bold">Nombre</span>: <span
+							th:text="*{nombre}">Nombre del modelo</span>
+					</p>
+					<p class="card-text">
+						<span style="font-weight: bold">Precio Base</span>: <span
+							th:text="*{#numbers.formatCurrency(precioBase)}">40000.0 €</span>
+					</p>
+					<p class="card-text">
+						<span style="font-weight: bold">Motor</span>: <span
+							th:text="*{motor.nombreBonito}">Descripción del motor</span>
+					</p>
+				  </div>
+				</div>
+		    </div>
+		
+		    <div class="col-lg">
+				<div class="card border-dark mb-3" style="max-width: 18rem;">
+				  <div class="card-header">
+				  	Equipamiento de serie
+				  </div>
+				  <div class="card-body text-dark"
+				  	th:object="${coche}">
+					<ul class="card-text">
+						<li th:each="incluye : *{listaIncluye}">
+							<span th:text="${incluye.equipamiento.descripcion + ': ' + #numbers.formatCurrency(incluye.equipamiento.precio)}">
+								Equipamiento 1
+							</span>
+							<span class="badge badge-warning" 
+								th:if="${incluye.descuento > 0}"
+								th:text="${'-' + incluye.descuento + '%'}">
+								Descuento
+							</span>
+						</li>
+					</ul>
+				  </div>
+				</div>
+			</div>
 		</div>
-	
-		<div style="margin: 1em">
-			<a class="btn btn-primary" th:href="@{.}">Regresar</a>
+
+		<div class="row">
+		    <div class="col-lg">
+				<div style="margin: 1em">
+					<a class="btn btn-primary" th:href="@{.}">Regresar</a>
+				</div>
+			</div>
 		</div>
 	</main>
 	
 </body>
 </html>
+<!-- 
+using flex
+<div class="d-flex flex-row">
+			<div class="p-2">
+				<div class="card border-dark mb-3" style="max-width: 18rem;">
+					<div class="card-header text-center">
+						Datos del Modelo<br />
+					</div>
+					<div class="card-body text-dark" th:object="${coche}">
+						<p class="card-text">
+							<span style="font-weight: bold">Id</span>: <span th:text="*{id}">1</span>
+						</p>
+						<p class="card-text">
+							<span style="font-weight: bold">Nombre</span>: <span
+								th:text="*{nombre}">Nombre del modelo</span>
+						</p>
+						<p class="card-text">
+							<span style="font-weight: bold">Precio base</span>: <span
+								th:text="*{#numbers.formatCurrency(precioBase)}">4000.0 €</span>
+						</p>
+						<p class="card-text">
+							<span style="font-weight: bold">Motor</span>: <span
+								th:text="*{motorBonito}">Descripción motor</span>
+						</p>
+					</div>
+				</div>
+				<div class="p-2">
+					<div class="card border-dark mb-3" style="max-width: 18rem;">
+						<div class="card-header text-center">
+							Equipamiento de serie<br />
+						</div>
+						<div class="card-body text-dark" th:object="${coche}">
+							<p class="card-text">
+								<span style="font-weight: bold">Id</span>: <span th:text="*{id}">1</span>
+							</p>
+							<p class="card-text">
+								<span style="font-weight: bold">Nombre</span>: <span
+									th:text="*{nombre}">Nombre del modelo</span>
+							</p>
+							<p class="card-text">
+								<span style="font-weight: bold">Precio base</span>: <span
+									th:text="*{#numbers.formatCurrency(precioBase)}">4000.0
+									€</span>
+							</p>
+							<p class="card-text">
+								<span style="font-weight: bold">Motor</span>: <span
+									th:text="*{motorBonito}">Descripción motor</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+ -->

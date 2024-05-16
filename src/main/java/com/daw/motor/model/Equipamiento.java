@@ -1,12 +1,17 @@
 package com.daw.motor.model;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 
 @Entity
@@ -24,6 +29,9 @@ public class Equipamiento {
 	
 	@Column
 	private String foto;
+	
+	@OneToMany(mappedBy="equipamiento", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Incluye> listaIncluye = new HashSet<>();
 
 	public Equipamiento() {}
 	
@@ -69,6 +77,10 @@ public class Equipamiento {
 
 	public void setFoto(String foto) {
 		this.foto = foto;
+	}
+	
+	public Set<Incluye> getListaIncluye() {
+		return listaIncluye;
 	}
 
 	@Override

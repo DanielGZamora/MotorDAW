@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{base :: head}">
@@ -20,29 +19,53 @@
 	</nav>
 
 	<main role="main" class="container">
-		<div class="card border-dark mb-3" style="max-width: 18rem;">
-		  <div class="card-header text-center">
-		  	Datos del Equipamiento<br/>
-		  	<img width="128" th:src="@{/img/{archivo}(archivo=${equipamiento.foto})}">
-		  </div>
-		  <div class="card-body text-dark"
-		  	th:object="${equipamiento}">
-			<p class="card-text">
-				<span style="font-weight: bold">Id</span>: <span th:text="*{id}">1</span>
-			</p>
-			<p class="card-text">
-				<span style="font-weight: bold">Descripción</span>: <span
-					th:text="*{descripcion}">Elevalunas electrico</span>
-			</p>
-			<p class="card-text">
-				<span style="font-weight: bold">Precio</span>: <span
-					th:text="*{#numbers.formatCurrency(precio)}">4000.0 €</span>
-			</p>
-		  </div>
+		<div class="row">
+		    <div class="col-lg">
+				<div class="card border-dark mb-3" style="max-width: 18rem;">
+				  <div class="card-header text-center">
+				  	Datos del Equipamiento<br/>
+				  	<img width="128" th:src="@{/img/{archivo}(archivo=${equipamiento.foto})}">
+				  </div>
+				  <div class="card-body text-dark"
+				  	th:object="${equipamiento}">
+					<p class="card-text">
+						<span style="font-weight: bold">Id</span>: <span th:text="*{id}">1</span>
+					</p>
+					<p class="card-text">
+						<span style="font-weight: bold">Descripción</span>: <span
+							th:text="*{descripcion}">Elevalunas electrico</span>
+					</p>
+					<p class="card-text">
+						<span style="font-weight: bold">Precio</span>: <span
+							th:text="*{#numbers.formatCurrency(precio)}">4000.0 €</span>
+					</p>
+				  </div>
+				</div>
+		    </div>
+		
+		    <div class="col-lg">
+				<div class="card border-dark mb-3" style="max-width: 18rem;">
+				  <div class="card-header">
+				  	Modelos que lo incluyen
+				  </div>
+				  <div class="card-body text-dark"
+				  	th:object="${equipamiento}">
+					<ul class="card-text">
+						<li th:each="incluye : *{listaIncluye}"
+							th:text="${incluye.coche.nombre}">
+							Coche 1</li>
+					</ul>
+				  </div>
+				</div>
+			</div>
 		</div>
-	
-		<div style="margin: 1em">
-			<a class="btn btn-primary" th:href="@{.}">Regresar</a>
+
+		<div class="row">
+		    <div class="col-lg">
+				<div style="margin: 1em">
+					<a class="btn btn-primary" th:href="@{.}">Regresar</a>
+				</div>
+			</div>
 		</div>
 	</main>
 	
