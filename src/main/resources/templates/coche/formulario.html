@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head}">
+<meta charset="UTF-8">
+<title>Título de la página</title>
+</head>
+
+<body>
+	<div th:replace="~{base :: cabecera}">Cabecera</div>
+
+	<div th:replace="~{base :: menu}">Menu de opciones</div>
+
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">Inicio</a></li>
+			<li class="breadcrumb-item"><a href="/modelo/">Modelos</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Editar</li>
+		</ol>
+	</nav>
+
+	<main role="main" class="container">
+		<form th:action="@{enviar}" th:object="${coche}" method="post"
+			style="border: 1px solid black; padding: 1em">
+			<input th:field="*{id}" id="id" type="hidden" />
+			<p>
+				<label for="nombre" style="font-weight: bold">Nombre:</label>
+				<input th:field="*{nombre}" id="nombre" type="text" />
+			</p>
+			<p>
+				<label for="precioBase" style="font-weight: bold">Precio:</label>
+				<input th:field="*{precioBase}" id="precioBase" type="number" step="any" min="0" />
+			</p>
+			
+			<p>
+				<label for="motor" style="font-weight: bold">Motor: </label>
+				<select th:field="*{motor}" id="motor">
+					<option value="-1">---</option>
+					<option th:each="m : ${listaMotores}" th:value="${m.id}"
+						th:text="${m.nombreBonito}">
+						Tipo de motor
+					</option>
+				</select>
+			</p>
+	
+			<a class="btn btn-secondary" th:href="@{..}">Cancelar</a>
+			<button class="btn btn-primary" type="submit">Aceptar</button>
+		</form>
+	</main>
+	
+</body>
+</html>

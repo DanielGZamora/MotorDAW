@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+<meta charset="UTF-8">
+
+<script src="/webjars/jquery/jquery.slim.min.js"></script>
+
+<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Motor DAW</title>
+</head>
+
+<body>
+	<div th:fragment="cabecera"
+		class="bg-warning">
+		<!--
+		<h1 style="text-align: center">Motor DAW</h1>
+		-->
+	</div>
+	
+	<nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: #ccffcc;"
+		th:fragment="menu">
+	  <a class="navbar-brand" href="/">Motor DAW</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarText">
+	    <ul class="navbar-nav mr-auto">
+	      <li class="nav-item">
+	        <a class="nav-link" href="/modelo/">Modelos</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/motor/">Motores</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="/equipamiento/">Equipamiento</a>
+	      </li>
+	    </ul>
+	    <span class="navbar-text">
+	      <img width="100" th:src="@{/img/fotoPrincipal.jpg}">
+	    </span>
+	  </div>
+	</nav>
+	
+	<nav aria-label="breadcrumb">
+	  <ol class="breadcrumb">
+	    <li class="breadcrumb-item active" aria-current="page">Inicio</li>
+	  </ol>
+	</nav>
+	
+	<main role="main" class="container">
+		<div th:fragment="descartable" th:if="${error}"
+			class="alert alert-warning alert-dismissible fade show" role="alert">
+			<strong>Error:</strong>
+			<span th:text="${mensaje}">Se ha producido un error.</span>
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		
+	
+		<div class="jumbotron jumbotron-fluid">
+		  <div class="container">
+		    <h1 class="display-4">¡Bienvenido/a a Motor DAW!</h1>
+		    <p class="lead">Donde los sueños comienzan</p>
+		  </div>
+		</div>
+
+		<div th:fragment="modal"
+			class="modal fade" id="delete-modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title">Borrar elemento</h4>
+						<button type="button" class="close"
+						data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<p>¿Está usted seguro de borrar este elemento?</p>
+						<button type="button" class="btn btn-default"
+						data-dismiss="modal">No</button>
+						<a href="#" th:data-ruta="@{borrar-definitivamente/}"
+						class="btn btn-danger">Sí</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+</body>
+</html>

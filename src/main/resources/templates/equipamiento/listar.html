@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{base :: head}">
+	<meta charset="UTF-8">
+	<title>Título de la página</title>
+</head>
+
+<body>
+	<div th:replace="~{base :: cabecera}">Cabecera</div>
+
+	<div th:replace="~{base :: menu}">Menú de opciones</div>
+
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">Inicio</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Equipamientos</li>
+		</ol>
+	</nav>
+
+	<main role="main" class="container">
+		<div th:replace="~{base :: descartable}">Descartable</div>
+
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">Descripción</th>
+					<th scope="col">Precio</th>
+					<th scope="col">Acciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="equipamiento : ${listaEquipamientos}" th:object="${equipamiento}">
+					<th scope="row" th:text="*{id}">1</th>
+					<td th:text="*{descripcion}">Diesel</td>
+					<td th:text="*{#numbers.formatCurrency(precio)}">4000.0</td>
+					<td>
+						<a class="btn btn-info" th:href="@{{id}(id=*{id})}">Ver</a>
+						<a class="btn btn-primary" th:href="@{editar/{id}(id=*{id})}">Editar</a>
+						<button class="btn btn-danger" data-toggle="modal" data-target="#delete-modal"
+							th:data-id="*{id}">Borrar</button>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div style="margin: 1em">
+			<a class="btn btn-secondary" th:href="@{..}">Regresar</a>
+			<a class="btn btn-primary" th:href="@{nuevo/item}">Nuevo</a>
+		</div>
+
+		<div th:replace="~{base :: modal}">Menú modal</div>
+	</main>
+
+	<!-- Incluir JavaScript personalizado -->
+	<script src="../../static/js/app.js" th:src="@{/js/app.js}"></script>
+
+</body>
+
+</html>

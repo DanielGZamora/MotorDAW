@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{base :: head}">
+<meta charset="UTF-8">
+<title>Título de la página</title>
+</head>
+
+<body>
+	<div th:replace="~{base :: cabecera}">Cabecera</div>
+
+	<div th:replace="~{base :: menu}">Menu de opciones</div>
+
+	<nav aria-label="breadcrumb">
+		<ol class="breadcrumb">
+			<li class="breadcrumb-item"><a href="/">Inicio</a></li>
+			<li class="breadcrumb-item"><a href="/equipamiento/">Modelos</a></li>
+			<li class="breadcrumb-item active" aria-current="page">Ver</li>
+		</ol>
+	</nav>
+
+	<main role="main" class="container">
+		<div class="card border-dark mb-3" style="max-width: 18rem;">
+		  <div class="card-header text-center">
+		  	Datos del Modelo<br/>
+		  </div>
+		  <div class="card-body text-dark"
+		  	th:object="${coche}">
+			<p class="card-text">
+				<span style="font-weight: bold">Id</span>: <span th:text="*{id}">1</span>
+			</p>
+			<p class="card-text">
+				<span style="font-weight: bold">Nombre</span>: <span
+					th:text="*{nombre}">Nombre del modelo</span>
+			</p>
+			<p class="card-text">
+				<span style="font-weight: bold">Precio base</span>: <span
+					th:text="*{#numbers.formatCurrency(precioBase)}">4000.0 €</span>
+			</p>
+			<p class="card-text">
+				<span style="font-weight: bold">Motor</span>: <span
+					th:text="*{motorBonito}">Descripción motor</span>
+			</p>
+		  </div>
+		</div>
+	
+		<div style="margin: 1em">
+			<a class="btn btn-primary" th:href="@{.}">Regresar</a>
+		</div>
+	</main>
+	
+</body>
+</html>
