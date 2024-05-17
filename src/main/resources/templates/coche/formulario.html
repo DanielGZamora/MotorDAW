@@ -35,7 +35,8 @@
 				<label for="motor" style="font-weight: bold">Motor: </label>
 				<select th:field="*{motor}" id="motor">
 					<option value="-1">---</option>
-					<option th:each="m : ${listaMotores}" th:value="${m.id}"
+					<option th:each="m : ${listaMotores}"
+						th:value="${m.id}"
 						th:text="${m.nombreBonito}">
 						Tipo de motor
 					</option>

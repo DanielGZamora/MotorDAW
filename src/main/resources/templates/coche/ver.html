@@ -58,13 +58,21 @@
 							<span th:text="${incluye.equipamiento.descripcion + ': ' + #numbers.formatCurrency(incluye.equipamiento.precio)}">
 								Equipamiento 1
 							</span>
-							<span class="badge badge-warning" 
+							<span class="badge badge-pill badge-danger" 
 								th:if="${incluye.descuento > 0}"
-								th:text="${'-' + incluye.descuento + '%'}">
+								th:text="${-incluye.descuento + '%'}">
 								Descuento
 							</span>
 						</li>
 					</ul>
+					
+					<div style="margin: 1em">
+						<a class="btn btn-primary"
+							th:href="@{equipamientos/{id}(id=*{id})}">
+							Editar
+						</a>
+					</div>
+					
 				  </div>
 				</div>
 			</div>

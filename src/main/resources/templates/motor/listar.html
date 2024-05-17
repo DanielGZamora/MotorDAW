@@ -39,9 +39,11 @@
 				<td th:text="*{tipo}">Diesel</td>
 				<td th:text="*{potencia}">180.0</td>
 				<td th:text="*{#numbers.formatCurrency(precio)}">4000.0</td>
+				
 				<td th:if="*{not #lists.isEmpty(cochesBonito)}"
 					th:text="*{cochesBonito}">Lista de coches que lo montan</td>
 				<td th:unless="*{not #lists.isEmpty(cochesBonito)}"> -- Ninguno --</td>
+				
 				<td >
 					<a class="btn btn-info"
 						th:href="@{{id}(id=*{id})}">Ver</a>

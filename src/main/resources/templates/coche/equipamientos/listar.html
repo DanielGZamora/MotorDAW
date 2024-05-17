@@ -13,8 +13,8 @@
 	<nav aria-label="breadcrumb">
 	  <ol class="breadcrumb">
 	    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-	    <li class="breadcrumb-item"><a href="/modelo">Modelos</a></li>
-	    <li class="breadcrumb-item active" aria-current="page">Equipamientos</li>
+	    <li class="breadcrumb-item"><a href="/modelo/">Modelos</a></li>
+	    <li class="breadcrumb-item active" aria-current="page">Equipamientos del modelo</li>
 	  </ol>
 	</nav>
 	
@@ -38,8 +38,6 @@
 				<td th:text="*{descripcion}">Diesel</td>
 				<td th:text="*{#numbers.formatCurrency(precio)}">4000.0</td>
 				<td >
-					<a class="btn btn-info"
-						th:href="@{{id}(id=*{id})}">Ver</a>
 					<a class="btn btn-primary"
 						th:href="@{editar/{id}(id=*{id})}">Editar</a>
 					<button class="btn btn-danger"

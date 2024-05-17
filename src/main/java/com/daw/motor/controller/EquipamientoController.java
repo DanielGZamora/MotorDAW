@@ -118,7 +118,7 @@ public class EquipamientoController {
 	public String nuevoEquipamiento(Model modelo) {
 		Equipamiento nuevoEquipamiento = new Equipamiento();
 		
-		nuevoEquipamiento.setDescripcion("");
+		nuevoEquipamiento.setDescripcion("Escriba una descripción");
 		
 		modelo.addAttribute("equipamiento", nuevoEquipamiento);
 		

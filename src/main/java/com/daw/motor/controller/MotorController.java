@@ -20,7 +20,7 @@ import com.daw.motor.service.MotorService;
 public class MotorController {
 	@Autowired
 	MotorService motorService;
-
+	
 	@GetMapping("/")
 	public String listarMotores(Model modelo) {
 		Collection<Motor> listaMotores = motorService.getAll(); 
@@ -32,7 +32,8 @@ public class MotorController {
 
 	@GetMapping("/{id}")
 	public String verMotor(
-			@PathVariable(name = "id") Long id,
+			@PathVariable(name = "id")
+			Long id,
 			Model modelo,
 			RedirectAttributes redirAttrs) {
 		
@@ -102,7 +103,7 @@ public class MotorController {
 			Motor motor,
 			Model modelo,
 			RedirectAttributes redirAttrs) {
-
+		
 		try {
 			motorService.update(motor);
 			return "redirect:..";
@@ -116,17 +117,18 @@ public class MotorController {
 
 	@GetMapping("/nuevo/item")
 	public String nuevoMotor(Model modelo) {
-		Motor nuevoMotor= new Motor();
-		nuevoMotor.setTipo("");
-		nuevoMotor.setPotencia(0);
+		Motor nuevoMotor = new Motor();
+		
+		nuevoMotor.setTipo("Escriba el tipo");
+		
 		modelo.addAttribute("motor", nuevoMotor);
 		
 		return "motor/formulario";
 	}
 
 	@PostMapping("/nuevo/enviar")
-	public String guardarNuevoEquipamiento(
-			@ModelAttribute(name = ",motor")
+	public String guardarNuevoMotor(
+			@ModelAttribute(name = "motor")
 			Motor motor,
 			RedirectAttributes redirAttrs) {
 

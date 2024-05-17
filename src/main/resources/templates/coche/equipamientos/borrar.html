@@ -20,6 +20,31 @@
 
 	<main role="main" class="container">
 		<div class="card border-dark mb-3" style="max-width: 18rem;">
+		  <div class="card-header">
+		  	Datos del Modelo
+		  </div>
+		  <div class="card-body text-dark"
+		  	th:object="${coche}">
+			<p class="card-text">
+				<span style="font-weight: bold">Id</span>: <span th:text="*{id}">1</span>
+			</p>
+			<p class="card-text">
+				<span style="font-weight: bold">Nombre</span>: <span
+					th:text="*{nombre}">Nombre del modelo</span>
+			</p>
+			<p class="card-text">
+				<span style="font-weight: bold">Precio Base</span>: <span
+					th:text="*{#numbers.formatCurrency(precioBase)}">40000.0 €</span>
+			</p>
+			<p class="card-text">
+				<span style="font-weight: bold">Motor</span>: <span
+					th:text="*{motor.nombreBonito}">Descripción del motor</span>
+			</p>
+		  </div>
+		</div>
+
+
+		<div class="card border-dark mb-3" style="max-width: 18rem;">
 		  <div class="card-header">Datos del Equipamiento</div>
 		  <div class="card-body text-dark"
 		  	th:object="${equipamiento}">
@@ -42,9 +67,9 @@
 			¿Está seguro de borrar el objeto?
 		  </div>
 		  <div class="card-body text-center">
-			<a class="btn btn-secondary" th:href="@{..}">No</a>
+			<a class="btn btn-secondary" th:href="@{/modelo/equipamientos/{idc}(idc=${coche.id})}">No</a>
 			<a class="btn btn-danger"
-				th:href="@{/equipamiento/borrar-definitivamente/{id}(id=${equipamiento.id})}">Sí</a>
+				th:href="@{/modelo/equipamientos/{idc}/borrar-definitivamente/{ide}(idc=${coche.id},ide=${equipamiento.id})}">Sí</a>
 			</div>
 		</div>
 	</main>
